@@ -1,0 +1,62 @@
+import React, { useEffect } from 'react';
+import { AiOutlineLogout } from 'react-icons/ai';
+import { Link, useNavigate } from 'react-router-dom';
+import { firebaseAuth } from '../utils/firebaseconfig';
+
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+
+import img from '../emblem.jpeg';
+import '../App.css';
+
+const Topnav = ({ isScrolled }) => {
+  const navlinks = [
+    { name: 'Home', link: '/' },
+    { name: 'Show', link: '/tv' },
+    { name: 'My player', link: '/player' },
+    { name: 'Movies', link: '/movie' },
+  ];
+
+  const navigate = useNavigate();
+
+
+  useEffect(() => {
+    onAuthStateChanged(firebaseAuth, (currentUser) => {
+      if (!currentUser) {
+        navigate('/login');
+      }
+    });
+  });
+
+  return (
+    <div className='header-nav'>
+
+    <nav className={`${isScrolled ? 'scrolled' : 'notScroll'}`}>
+    <div className='leftside'>
+        <img src={img} alt='Company emblem' className='navlogo' />
+        <span>Top nav</span>
+      </div>
+
+      <ul className='links'>
+        {navlinks.map((item, index) => {
+          return (
+            <li key={index}>
+              <Link to={item.link}>{item.name}</Link>
+            </li>
+          );
+        })}
+      </ul>
+
+      <div className='rightside'>
+        <button onClick={() => signOut(firebaseAuth)} className='logoutbutton'>
+          Log out
+          <AiOutlineLogout />
+        </button>
+      </div>
+    </nav>
+
+      
+    </div>
+  );
+};
+
+export default Topnav;
