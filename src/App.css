@@ -78,8 +78,8 @@ a:hover {
 }
 
 .navlogo {
-  width: 8rem;
-  height: 8rem;
+  width: 6rem;
+  height: 6rem;
   border-radius: 2rem;
 }
 
@@ -113,9 +113,60 @@ h1 {
   color: white;
 }
 
-.playbtn {
+.favbtn {
   position: relative;
   background-color: limegreen;
   color: white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+table {
+  width: 94%;
+  border-collapse: collapse;
+  margin: 20px auto;
   margin-top: 4rem;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  color: white;
+  background-color: black;
+  opacity: 0.6;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #ff0909;
+}
+
+.favoritebutton {
+  background-color: limegreen;
+}
+
+td {
+  display: flex;
+  justify-content: space-between;
+}
+
+.removebutton {
+  background-color: red;
+  color: white;
+}
+
+.favheader {
+  margin-top: 2rem;
+  color: limegreen;
+  font-size: 2rem;
+  font-weight: bolder;
 }

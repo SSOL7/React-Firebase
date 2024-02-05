@@ -32,8 +32,6 @@ const Topnav = ({ isScrolled }) => {
 
     <nav className={`${isScrolled ? 'scrolled' : 'notScroll'}`}>
     <div className='leftside'>
-        <img src={img} alt='Company emblem' className='navlogo' />
-        <span>Top nav</span>
       </div>
 
       <ul className='links'>
