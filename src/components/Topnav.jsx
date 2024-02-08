@@ -9,7 +9,6 @@ import '../App.css';
 const Topnav = ({ isScrolled }) => {
   const navlinks = [
     { name: 'Home', link: '/' },
-    { name: 'Show', link: '/tv' },
     { name: 'My player', link: '/player' },
   ];
 
