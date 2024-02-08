@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Topnav from '../components/Topnav';
@@ -7,10 +7,9 @@ import { fetchPosts } from '../store/postslice';
 
 import '../App.css';
 
-const Home = () => {
+const Home = ({ user }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [favorites, setFavorites] = useState([]);
-
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.data);
   const status = useSelector((state) => state.posts.status);
@@ -47,11 +46,14 @@ const Home = () => {
     return () => (window.onscroll = null);
   };
 
+  if (user) {
+    return <Navigate to="/private"></Navigate>
+  }
+
   return (
     <div className='hero'>
       <h1>Home</h1>
       <Topnav isScrolled={isScrolled} />
-
       <button
         className='favbtn'
         onClick={() => {

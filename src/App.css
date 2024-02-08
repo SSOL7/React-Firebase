@@ -147,7 +147,7 @@ tr:nth-child(even) {
 }
 
 table tr:hover {
-  background-color: #ff0909;
+  background-color: #fff200;
 }
 
 .favoritebutton {
@@ -169,4 +169,15 @@ td {
   color: limegreen;
   font-size: 2rem;
   font-weight: bolder;
+}
+
+.tohomebtn {
+  background-color: limegreen;
+  color: white;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.hero {
+  display: inline-block;
 }

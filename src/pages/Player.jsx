@@ -12,15 +12,17 @@ const Player = () => {
       <Topnav />
       <h1>Player</h1>
 
+      <div>
 
       <button
-      className='playbtn'
+      className='tohomebtn'
       onClick={() => {
         navigate('/');
       }}
-    >
+      >
       To homepage
     </button>
+      </div>
 
     </div>
   )

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-
 import Header from '../components/Header';
 import BackgroundImage from '../components/BackgroundImage';
 import { firebaseAuth } from '../utils/firebaseconfig';
@@ -9,7 +8,6 @@ import { firebaseAuth } from '../utils/firebaseconfig';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const navigate = useNavigate();
 
   const handleLogin = async () => {

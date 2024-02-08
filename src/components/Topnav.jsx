@@ -4,8 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { firebaseAuth } from '../utils/firebaseconfig';
 
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-
-import img from '../emblem.jpeg';
 import '../App.css';
 
 const Topnav = ({ isScrolled }) => {
@@ -13,11 +11,9 @@ const Topnav = ({ isScrolled }) => {
     { name: 'Home', link: '/' },
     { name: 'Show', link: '/tv' },
     { name: 'My player', link: '/player' },
-    { name: 'Movies', link: '/movie' },
   ];
 
   const navigate = useNavigate();
-
 
   useEffect(() => {
     onAuthStateChanged(firebaseAuth, (currentUser) => {
@@ -29,30 +25,29 @@ const Topnav = ({ isScrolled }) => {
 
   return (
     <div className='header-nav'>
+      <nav className={`${isScrolled ? 'scrolled' : 'notScroll'}`}>
+        <div className='leftside'></div>
 
-    <nav className={`${isScrolled ? 'scrolled' : 'notScroll'}`}>
-    <div className='leftside'>
-      </div>
+        <ul className='links'>
+          {navlinks.map((item, index) => {
+            return (
+              <li key={index}>
+                <Link to={item.link}>{item.name}</Link>
+              </li>
+            );
+          })}
+        </ul>
 
-      <ul className='links'>
-        {navlinks.map((item, index) => {
-          return (
-            <li key={index}>
-              <Link to={item.link}>{item.name}</Link>
-            </li>
-          );
-        })}
-      </ul>
-
-      <div className='rightside'>
-        <button onClick={() => signOut(firebaseAuth)} className='logoutbutton'>
-          Log out
-          <AiOutlineLogout />
-        </button>
-      </div>
-    </nav>
-
-      
+        <div className='rightside'>
+          <button
+            onClick={() => signOut(firebaseAuth)}
+            className='logoutbutton'
+          >
+            Log out
+            <AiOutlineLogout />
+          </button>
+        </div>
+      </nav>
     </div>
   );
 };
